@@ -1,28 +1,25 @@
-const books = [
-  {
-    id: '1231241244',
-    title: 'arnasbdj',
-    author: 'asdasd',
-    pages: 123,
-  },
-  {
-    id: '1124124=4',
-    title: 'dddd',
-    author: 'asdffasd',
-    pages: 1243,
-  },
-  {
-    id: '1124344',
-    title: 'aaaa',
-    author: 'dddd',
-    pages: 12443,
-  },
-];
+// const logger = require('@condor-labs/logger');
+const { book } = require('../models/exampleBook');
+const { v1: uuid } = require('uuid');
+// const { UserInputError } = require('graphql');
 
-const resolvers = {
+exports.resolvers = {
   Query: {
-    bookCount: () => books.length,
+    getBooks() {
+      return book;
+    },
+    listBooks: (root, args) => {
+      const { title } = args;
+      return book.find((book) => book.title === title);
+    },
+  },
+
+  Mutation: {
+    createBook: (root, args) => {
+      const book = { ...args, _id: uuid() };
+      console.log(book);
+      book.push(book);
+      return book;
+    },
   },
 };
-
-module.exports = resolvers;

@@ -2,20 +2,28 @@ const { makeExecutableSchema } = require('@graphql-tools/schema');
 const { resolvers } = require('./resolvers');
 // const { typeDefs } = require('./typeDefs')
 
-const typeDefs = /* GraphQL */ `
+const typeDefs = `
+  type Query {
+    getBooks: [book]!
+    listBooks(title: String!): book
+  }
+
   type book {
-    id: ID!
+    _id: ID
     title: String!
     author: String!
     pages: Int!
   }
 
-  type Query {
-    bookCount: Int!
-    allbooks: [book]
+  type Mutation {
+    createBook(
+    title: String!
+    author: String!
+    pages: Int!): book
   }
+
 `;
 exports.schema = makeExecutableSchema({
-  typeDefs,
-  resolvers,
+  typeDefs: typeDefs,
+  resolvers: resolvers,
 });
