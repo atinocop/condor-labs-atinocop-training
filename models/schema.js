@@ -3,6 +3,13 @@ const { resolvers } = require('./resolvers');
 // const { typeDefs } = require('./typeDefs')
 
 const typeDefs = `
+
+  enum STATUS {
+    LENT
+    AVAILABlE
+    UNAVAILABLE
+  }
+
   type Query {
     getBooks: [book]!
     listBooks(title: String!): book
@@ -13,13 +20,23 @@ const typeDefs = `
     title: String!
     author: String!
     pages: Int!
+    status: STATUS!
   }
 
   type Mutation {
     createBook(
     title: String!
     author: String!
-    pages: Int!): book
+    pages: Int!
+    status: STATUS!
+    ): book
+
+    updateBook(
+      title: String!
+      author: String!
+      pages: Int!
+      status: STATUS!
+      ): book
   }
 
 `;
