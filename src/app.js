@@ -4,9 +4,8 @@ const { schema } = require('../models/schema');
 
 const app = express();
 
-// const schema = {}
 app.use(
-  '/test',
+  '/',
   graphqlHTTP({
     graphiql: true,
     schema: schema,

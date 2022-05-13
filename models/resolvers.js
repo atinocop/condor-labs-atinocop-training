@@ -2,10 +2,10 @@ const { Book } = require('./book');
 
 exports.resolvers = {
   Query: {
-    getBooks() {
+    listBooks() {
       return Book.find({});
     },
-    findBook(_, args) {
+    getBookDetails(_, args) {
       const { title } = args;
       return Book.findOne({ title });
     },
@@ -17,14 +17,7 @@ exports.resolvers = {
       return book.save();
     },
     async updateBook(_, { book, id }) {
-      const bookUpdate = await Book.findByIdAndUpdate(
-        id,
-        {
-          $set: book,
-        },
-        { new: true }
-      );
-
+      const bookUpdate = await Book.findByIdAndUpdate(id, { $set: book }, { new: true });
       return bookUpdate.save();
     },
     async deleteBook(_, { id }) {

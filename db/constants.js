@@ -1,4 +1,7 @@
-require('dotenv').config();
+const NODE_ENV = process.env.NODE_ENV || 'development';
+require('dotenv').config({
+  path: `.env.${NODE_ENV}`,
+});
 
 module.exports.Settings = {
   connectionName: 'Cluster0',
@@ -6,7 +9,7 @@ module.exports.Settings = {
   port: 27017,
   database: 'Cluster0',
   user: 'atinoco',
-  password: 'atinoco.condor',
+  password: process.env.DB_PASSWORD,
   replicaSet: 'compliance-support-shard-0',
   ssl: true,
   authSource: 'admin',

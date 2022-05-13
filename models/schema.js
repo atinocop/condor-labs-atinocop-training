@@ -1,6 +1,5 @@
 const { makeExecutableSchema } = require('@graphql-tools/schema');
 const { resolvers } = require('./resolvers');
-// const { typeDefs } = require('./typeDefs')
 
 const typeDefs = `
 
@@ -10,8 +9,8 @@ const typeDefs = `
     UNAVAILABLE}
 
   type Query {
-    getBooks: [Book]!
-    findBook(title: String!): Book}
+    listBooks: [Book]!
+    getBookDetails(title: String!): Book}
 
   type Book {
     _id: ID
@@ -20,7 +19,7 @@ const typeDefs = `
     pages: Int!
     status: STATUS!}
 
- input bookInput{ title: String! author: String! pages: Int! status: STATUS! }
+ input bookInput{ title: String author: String pages: Int status: STATUS! }
 
   type Mutation {
     createBook(

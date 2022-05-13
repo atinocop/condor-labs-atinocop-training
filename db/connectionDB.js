@@ -8,16 +8,3 @@ async function connect() {
   logger.info(`Se conecto la base de datos:${mongodb._isConnected()}`);
 }
 module.exports = connect;
-
-// const MONGODB_URI = MONGODB_URI;
-
-// mongoose.connect(MONGODB_URI, {
-//   userNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   useFindAndModify: false,
-//   useCreateIndex: true,
-// }).then(() => {
-//     logger.info('Conectado a MongoDB')
-// }).catch(err => {
-//     logger.info('Error conectando base de datos mongoDB', err.message)
-// })
