@@ -1,8 +1,10 @@
 const app = require('./app');
 const logger = require('@condor-labs/logger');
-// const connect = require("../db/connectionMongoDb");
+const connect = require('../db/connectionDB');
 
-// connect();
+(async () => {
+  await connect();
+})();
 
 const PORT = 4000;
 const HOST = '0.0.0.0';

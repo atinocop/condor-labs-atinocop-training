@@ -1,12 +1,13 @@
-// module.exports.mongoDbSettings = {
-//     Settings: {
-//       host: "exapmle-shard-00-00-8burs.mongodb.net,exapmle-shard-00-01-8burs.mongodb.net,exapmle-shard-00-02-8burs.mongodb.net",
-//       port: 27017,
-//       database: "dev",
-//       user: "atinoco",
-//       password: "atinoco.condor",
-//       replicaSet: "compliance-support-shard-0",
-//       ssl: true,
-//       authSource: "admin",
-//     },
-//   };
+require('dotenv').config();
+
+module.exports.Settings = {
+  connectionName: 'Cluster0',
+  host: 'cluster0-shard-00-02.zxrpt.mongodb.net:27017',
+  port: 27017,
+  database: 'Cluster0',
+  user: 'atinoco',
+  password: 'atinoco.condor',
+  replicaSet: 'compliance-support-shard-0',
+  ssl: true,
+  authSource: 'admin',
+};

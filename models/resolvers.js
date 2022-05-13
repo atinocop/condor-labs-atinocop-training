@@ -1,41 +1,35 @@
-// const logger = require('@condor-labs/logger');
-const { books } = require('../models/exampleBook');
-const { v1: uuid } = require('uuid');
-const { UserInputError } = require('@graphql-tools/utils');
+const { Book } = require('./book');
 
 exports.resolvers = {
   Query: {
     getBooks() {
-      return books;
+      return Book.find({});
+    },
+    findBook(_, args) {
+      const { title } = args;
+      return Book.findOne({ title });
     },
   },
 
   Mutation: {
-    createBook: (root, args) => {
-      if (books.find((b) => b.title === args.title)) {
-        throw new UserInputError('El nombre debe ser UNICO', { invalidArgs: args.title });
-      }
-      const book = { ...args, _id: uuid() };
-      console.log(book);
-      books.push(book);
-      return book;
+    createBook: (_, args) => {
+      const book = new Book({ ...args });
+      return book.save();
     },
-    updateBook: (root, args) => {
-      const bookIndex = books.findIndex(
-        (b) => b.title === args.title,
-        (b) => b.author === args.author,
-        (b) => b.pages === args.pages,
-        (b) => b.status === args.status
+    async updateBook(_, { book, id }) {
+      const bookUpdate = await Book.findByIdAndUpdate(
+        id,
+        {
+          $set: book,
+        },
+        { new: true }
       );
-      if (bookIndex === -1) {
-        return null;
-      }
-      const book = books[bookIndex];
 
-      const updateBook = { ...book, title: args.title, author: args.author, pages: args.pages, status: args.status };
-      books[bookIndex] = updateBook;
-
-      return updateBook;
+      return bookUpdate.save();
+    },
+    async deleteBook(_, { id }) {
+      await Book.findByIdAndDelete(id);
+      return `El libro con id:${id} a sido eliminado`;
     },
   },
 };

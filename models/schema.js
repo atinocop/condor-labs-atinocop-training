@@ -7,21 +7,20 @@ const typeDefs = `
   enum STATUS {
     LENT
     AVAILABlE
-    UNAVAILABLE
-  }
+    UNAVAILABLE}
 
   type Query {
-    getBooks: [book]!
-    listBooks(title: String!): book
-  }
+    getBooks: [Book]!
+    findBook(title: String!): Book}
 
-  type book {
+  type Book {
     _id: ID
     title: String!
     author: String!
     pages: Int!
-    status: STATUS!
-  }
+    status: STATUS!}
+
+ input bookInput{ title: String! author: String! pages: Int! status: STATUS! }
 
   type Mutation {
     createBook(
@@ -29,15 +28,10 @@ const typeDefs = `
     author: String!
     pages: Int!
     status: STATUS!
-    ): book
+    ): Book
 
-    updateBook(
-      title: String!
-      author: String!
-      pages: Int!
-      status: STATUS!
-      ): book
-  }
+    updateBook( id: ID!, book: bookInput! ): Book
+    deleteBook(id: ID): String!}
 
 `;
 exports.schema = makeExecutableSchema({
