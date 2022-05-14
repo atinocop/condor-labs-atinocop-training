@@ -1,8 +1,8 @@
 module.exports = {
   apps: [
     {
-      name: 'app-library',
-      script: './src/npm run dev',
+      name: 'library',
+      script: './src/index.js',
       watch: false,
       max_memory_restart: '1000M',
       exec_mode: 'cluster',
