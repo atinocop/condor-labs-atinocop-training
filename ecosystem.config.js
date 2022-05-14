@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'library',
+      name: 'app-library',
       script: './src/index.js',
       watch: false,
       max_memory_restart: '1000M',
