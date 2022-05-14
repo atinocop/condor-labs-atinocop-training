@@ -3,7 +3,7 @@ module.exports = {
     {
       name: 'app-library',
       script: './src/index.js',
-      watch: false,
+      watch: true,
       max_memory_restart: '1000M',
       exec_mode: 'cluster',
       instancias: 1,
