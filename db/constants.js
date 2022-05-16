@@ -9,7 +9,7 @@ module.exports.Settings = {
   port: 27017,
   database: 'Cluster0',
   user: 'atinoco',
-  password: process.env.DB_PASSWORD,
+  password: 'atinoco.condor',
   replicaSet: 'compliance-support-shard-0',
   ssl: true,
   authSource: 'admin',
