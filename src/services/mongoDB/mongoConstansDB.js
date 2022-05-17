@@ -6,7 +6,7 @@ require('dotenv').config({
 module.exports.Settings = {
   connectionName: 'Cluster0',
   host: 'cluster0-shard-00-02.zxrpt.mongodb.net:27017',
-  port: 27017,
+  port: process.env.PORT_BD,
   database: process.env.DB_NAME,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,

@@ -10,6 +10,8 @@ module.exports = {
       autorestart: true,
       env: {
         NODE_ENV: 'development',
+        HOST: '0.0.0.0',
+        PORT: '4000',
       },
     },
   ],

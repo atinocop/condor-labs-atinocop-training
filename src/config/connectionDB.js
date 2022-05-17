@@ -1,5 +1,5 @@
 const logger = require('@condor-labs/logger');
-const mongo = require('./constants');
+const mongo = require('../services/mongoDB/mongoConstansDB');
 const mongodb = require('@condor-labs/mongodb')(mongo.Settings);
 
 async function connect() {

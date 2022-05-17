@@ -1,6 +1,11 @@
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
-const { schema } = require('../models/schema');
+const { schema } = require('./schema/graphql/schema');
+const connect = require('../src/config/connectionDB');
+
+(async () => {
+  await connect();
+})();
 
 const app = express();
 

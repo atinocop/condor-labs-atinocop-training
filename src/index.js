@@ -1,13 +1,8 @@
 const app = require('./app');
 const logger = require('@condor-labs/logger');
-const connect = require('../db/connectionDB');
 
-(async () => {
-  await connect();
-})();
-
-const PORT = 4000;
-const HOST = '0.0.0.0';
+const PORT = process.env.PORT;
+const HOST = process.env.HOST;
 
 app.listen(PORT, HOST);
 logger.log(`listening on http://${HOST}:${PORT}`);
