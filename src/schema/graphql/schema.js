@@ -19,7 +19,7 @@ const typeDefs = `
     pages: Int!
     status: STATUS!}
 
- input bookInput{ title: String author: String pages: Int status: STATUS! }
+ input bookInput{ title: String author: String status: STATUS! }
 
   type Mutation {
     createBook(

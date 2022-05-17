@@ -14,6 +14,11 @@ exports.resolvers = {
   Mutation: {
     createBook: (_, args) => {
       const book = new Book({ ...args });
+      if (args.pages > 0) {
+        args.pages = true;
+      } else {
+        throw new Error(`the pages value must be greater than 0`);
+      }
       return book.save();
     },
 
