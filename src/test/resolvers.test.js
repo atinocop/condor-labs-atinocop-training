@@ -1,4 +1,4 @@
-const { listBooks, createBook, updateBook, deleteBook } = require('../../../models/resolvers');
+const { listBooks, createBook, updateBook, deleteBook } = require('../../src/schema/graphql/resolvers');
 
 describe('Get list book', function () {
   it('should exist a function with the given name', function () {
