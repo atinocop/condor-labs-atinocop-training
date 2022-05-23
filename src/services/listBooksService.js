@@ -1,7 +1,8 @@
 const { Book } = require('../schema/book');
 
-const listBooksService = () => {
-  return Book.find();
+const listBooksService = async () => {
+  const books = await Book.find();
+  return books;
 };
 
 module.exports = { listBooksService };

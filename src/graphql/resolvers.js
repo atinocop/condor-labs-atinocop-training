@@ -13,7 +13,6 @@ exports.resolvers = {
       return await getBookDetailsService(args);
     },
   },
-
   Mutation: {
     createBook: (_, args) => {
       return createBookService(args);
